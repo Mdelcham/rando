@@ -1,13 +1,24 @@
 <?php
-	$pdo = new PDO('mysql:host=localhost;dbname=reunion_island; charset=utf8','root', '');
-	$sql = $pdo->query('SELECT * FROM hiking');
+// ESSAI CONNECTION DB
+	try
+    	{
+
+    		$pdo = new PDO('mysql:host=localhost;dbname=reunion_island; charset=utf8','root', '');
+    	}
+    catch (Exception $e)
+    	{
+      		die('Erreur : ' . $e->getMessage());
+    	}
+    //CHARGER TOUTE LA DB
+    $sql = $pdo->query('SELECT * FROM hiking');
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Randonnées</title>
-    <link rel="stylesheet" href="css/basics.css" media="screen" title="no title" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
     <h1>Liste des randonnées</h1>
@@ -30,7 +41,8 @@
 				<td><?php echo $req['duration']; ?></td>
 				<td><?php echo $req['height_difference']; ?></td>
 			</tr>
-			<?php } ?>
+			<?php } 
+			?>
     </table>
     <a href="create.php">Create a new entry</a>
   </body>
