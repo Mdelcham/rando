@@ -10,6 +10,7 @@
       		die('Erreur : ' . $e->getMessage());
     	}
 
+    // VERIFIER SI ENTREE EXISTE OU NON
 	if (isset($_POST['name'])&& isset($_POST['difficulty'])&& isset($_POST['distance'])&& isset($_POST['duration'])&& isset($_POST['height_difference']))
 	{
 		$name = htmlspecialchars($_POST['name']);
@@ -53,6 +54,8 @@
 		        'duration' => $duration,
 		    	'height_difference' => $height_difference,
 		    ));
+
+		    // MESSAGE DE CONFIRMATION
 		    echo "<script type='text/javascript'>";
 			echo "alert('Votre parcours a bien été enregistré!');";
 			echo "window.location.href='read.php';";
@@ -65,11 +68,12 @@
 <head>
 	<meta charset="utf-8">
 	<title>Ajouter une randonnée</title>
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/style.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
+	<h1>Ajouter</h1>
 	<form action="create.php" method="post">
-		<h1>Ajouter</h1>
 		<div>
 			<label for="name">Name</label>
 			<input type="text" name="name" value="">

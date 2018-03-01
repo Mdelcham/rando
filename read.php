@@ -35,7 +35,7 @@
 			{
 			?>
 			<tr>
-				<td><?php echo $req['name']; ?></td>
+				<td> <a href="update.php?id=<?php echo $req['id']; ?>"><?php echo $req['name']; ?></a></td>
 				<td><?php echo $req['difficulty']; ?></td>
 				<td><?php echo $req['distance']; ?></td>
 				<td><?php echo $req['duration']; ?></td>
