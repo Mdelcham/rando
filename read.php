@@ -2,7 +2,6 @@
 // ESSAI CONNECTION DB
 	try
     	{
-
     		$pdo = new PDO('mysql:host=localhost;dbname=reunion_island; charset=utf8','root', '');
     	}
     catch (Exception $e)
@@ -29,6 +28,7 @@
 	    		<th>Distance<small> (en km)</small></th>
 	    		<th>Durée</th>
 	    		<th>Dénivelé<small> (en m)</small></th>
+	    		<th>Effacer</th>
 	    	</tr>
 		<?php 
 			while ($req = $sql->fetch())
@@ -40,10 +40,12 @@
 				<td><?php echo $req['distance']; ?></td>
 				<td><?php echo $req['duration']; ?></td>
 				<td><?php echo $req['height_difference']; ?></td>
+				<td><input type="checkbox" name ='toto[]' value="<?php $req['id'] ?>"></td>
 			</tr>
 			<?php } 
 			?>
     </table>
     <a href="create.php">Create a new entry</a>
+     <input id="erase" type="submit" value="Effacer">
   </body>
 </html>

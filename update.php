@@ -1,6 +1,13 @@
 <?php 
 	// DECLARATION VARIABLES 
-	$id = '';
+	if (!isset($_GET['id']))
+	{
+		$id = '';
+	}
+	else
+	{
+		$id = htmlspecialchars($_GET['id']);
+	}
 	$name = '';
 	$difficulty = '';
 	$distance = '';
@@ -30,7 +37,6 @@
     // VERIFIER SI ENTREE EXISTE OU NON
 	if (isset($_POST['name'])&& isset($_POST['difficulty'])&& isset($_POST['distance'])&& isset($_POST['duration'])&& isset($_POST['height_difference']))
 	{
-		$id = htmlspecialchars($_POST['id']);
 		$name = htmlspecialchars($_POST['name']);
 		$difficulty = htmlspecialchars($_POST['difficulty']);
 		$distance = htmlspecialchars($_POST['distance']);
@@ -52,19 +58,19 @@
 		}
 
 		// Verifier si 'name' n'existe pas deja
-		$req = $pdo->prepare('SELECT name FROM hiking');
+		$req = $pdo->prepare('SELECT name, id FROM hiking');
     	$req->execute();
     	while ($check = $req->fetch())
     	{
-      		if ($check['name'] == $_POST['name'])
+      		if ($check['name'] == $_POST['name'] && $check['id'] != $id)
       		{
 	        	$Error = 'Cette entrée existe deja';
       		}
     	}
-		// Si pas d'erreur --> Enregistrement dans DB
+		// Si pas d'erreur --> Remplacement dans DB
 	    if ($Error == '')
 	    {
-	    	$req = $pdo->prepare('INSERT INTO hiking(name, difficulty, distance, duration, height_difference) VALUES(:name, :difficulty, :distance, :duration, :height_difference)');
+	    	$req = $pdo->prepare('UPDATE hiking SET name = :name, difficulty = :difficulty, distance = :distance, duration = :duration, height_difference = :height_difference WHERE id = '.$id.'');
 		    $req->execute(array(
 		        'name' => $name,
 		        'difficulty' => $difficulty,
@@ -92,19 +98,40 @@
 	   	$height_difference = $data['height_difference'];
 
 	}
+	switch ($difficulty) {
+		case 'très facile':
+			$tres_facile = 'SELECTED';
+			break;
+		
+		case 'facile':
+			$facile = 'SELECTED';			
+			break;
+
+		case 'moyen':
+			$moyen = 'SELECTED';
+			break;
+
+		case 'difficile':
+			$difficile = 'SELECTED';
+			break;
+
+		case 'très difficile':
+			$tres_difficile = 'SELECTED';
+			break;
+	}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Ajouter une randonnée</title>
+	<title>Modifier une randonnée</title>
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/style.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
 	<a href="read.php">Liste des données</a>
 	<h1>Modifier une entrée</h1>
-	<form action="update.php" method="post">
+	<form action="update.php?id=<?=$id?>" method="post">
 		<div>
 			<input type="hidden" name="id" value="<?php echo $id ?>">
 			<label for="name">Name</label>
@@ -114,11 +141,11 @@
 		<div>
 			<label for="difficulty">Difficulté</label>
 			<select name="difficulty">
-				<option value="très facile">Très facile</option>
-				<option value="facile">Facile</option>
-				<option value="moyen">Moyen</option>
-				<option value="difficile">Difficile</option>
-				<option value="très difficile">Très difficile</option>
+				<option value="très facile" <?php echo $tres_facile; ?> >Très facile</option>
+				<option value="facile" <?php echo $facile; ?> >Facile</option>
+				<option value="moyen" <?php echo $moyen; ?> >Moyen</option>
+				<option value="difficile" <?php echo $difficile; ?> >Difficile</option>
+				<option value="très difficile" <?php echo $tres_difficile; ?> >Très difficile</option>
 			</select>
 		</div>
 		
