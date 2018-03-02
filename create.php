@@ -20,7 +20,7 @@
 		$height_difference = htmlspecialchars($_POST['height_difference']);
 
 		// Verification de la validité des entrées
-		if (filter_var($distance, FILTER_VALIDATE_INT ) === false) 
+		if (filter_var($distance, FILTER_VALIDATE_FLOAT ) === false) 
 		{
 			$Error .= "L'entrée distance est invalide, veuillez entrer un nombre<BR>";
 		}
