@@ -3,7 +3,7 @@
 	// CONNECTION DB + Erreur si pas possible 
 	try
     	{
-    		$pdo = new PDO('mysql:host=localhost;dbname=reunion_island; charset=utf8','root', '');
+    		$pdo = new PDO('mysql:host=localhost;dbname=reunion_island; charset=utf8','root', 'root');
     	}
     catch (Exception $e)
     	{
@@ -68,45 +68,47 @@
 <head>
 	<meta charset="utf-8">
 	<title>Ajouter une randonnée</title>
-	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/style.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-	<h1>Ajouter</h1>
-	<form action="create.php" method="post">
-		<div>
-			<label for="name">Name</label>
-			<input type="text" name="name" value="">
-		</div>
+	<div class="content_up_cr">
+		<h1>Ajouter une nouvelle randonnée</h1>
+		<form class="form_crea" action="create.php" method="post">
+			<div>
+				<label for="name">Name</label>
+				<input type="text" name="name" value="">
+			</div>
 
-		<div>
-			<label for="difficulty">Difficulté</label>
-			<select name="difficulty">
-				<option value="très facile">Très facile</option>
-				<option value="facile">Facile</option>
-				<option value="moyen">Moyen</option>
-				<option value="difficile">Difficile</option>
-				<option value="très difficile">Très difficile</option>
-			</select>
-		</div>
-		
-		<div>
-			<label for="distance">Distance</label>
-			<input type="text" name="distance" value="">
-		</div>
-		<div>
-			<label for="duration">Durée</label>
-			<input type="duration" name="duration" value="">
-		</div>
-		<div>
-			<label for="height_difference">Dénivelé</label>
-			<input type="text" name="height_difference" value="">
-		</div>
-		<button type="submit" value="Envoyer">Envoyer</button>
-	</form>
-	<a href="read.php"> Retour à la liste des données</a>
-	<?php 
-		echo $Error;
-	?>
+			<div>
+				<label for="difficulty">Difficulté</label>
+				<select name="difficulty">
+					<option value="très facile">Très facile</option>
+					<option value="facile">Facile</option>
+					<option value="moyen">Moyen</option>
+					<option value="difficile">Difficile</option>
+					<option value="très difficile">Très difficile</option>
+				</select>
+			</div>
+			
+			<div>
+				<label for="distance">Distance</label>
+				<input type="text" name="distance" value="">
+			</div>
+			<div>
+				<label for="duration">Durée</label>
+				<input type="duration" name="duration" value="">
+			</div>
+			<div>
+				<label for="height_difference">Dénivelé</label>
+				<input type="text" name="height_difference" value="">
+			</div>
+			<button type="submit" value="Envoyer">Envoyer</button>
+		</form>
+		<a href="read.php"> Retour à la liste des données</a>
+		<?php 
+			echo $Error;
+		?>
+	</div>
 </body>
 </html>

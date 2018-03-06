@@ -5,7 +5,7 @@
 		$parcours = $_POST['randoList'];
   		try
 	  	{
-	      	$pdo = new PDO('mysql:host=localhost;dbname=reunion_island;charset=utf8', 'root', '');
+	      	$pdo = new PDO('mysql:host=localhost;dbname=reunion_island;charset=utf8', 'root', 'root');
 	    }
 	  	catch (Exception $e)
 	  	{
