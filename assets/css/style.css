@@ -4,10 +4,10 @@ body {
   background: #FFECA6;
   font-family: 'Montserrat'; }
   body .content {
-    width: 900px;
+    max-width: 900px;
     margin: 0 auto; }
   body .content_up_cr {
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto; }
     body .content_up_cr a {
       text-decoration: none;
@@ -17,7 +17,7 @@ body {
         color: white; }
   body #delete {
     float: right;
-    margin: 10px calc((76px - 54px)/2) 0 0; }
+    margin: 3px calc((76px - 54px)/2) 0 0; }
   body table {
     font-size: 16px;
     margin: 0 auto;
@@ -41,7 +41,7 @@ body {
     text-align: center; }
   body .form_upd, body .form_crea {
     margin: 0 auto;
-    width: 600px;
+    max-width: 600px;
     /* Pour voir les limites du formulaire */
     padding: 1em;
     border: 1px solid #CCC;

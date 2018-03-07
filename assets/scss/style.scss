@@ -6,11 +6,11 @@ body{
 	background: #FFECA6;
 	font-family: 'Montserrat';
 	.content{
-		width: 900px;
+		max-width: 900px;
 		margin: 0 auto;
 	}
 	.content_up_cr{
-		width: 600px;
+		max-width: 600px;
 		margin: 0 auto;
 		a{
 			text-decoration: none;
@@ -23,7 +23,7 @@ body{
 	}
 	#delete{
 		float: right;
-		margin: 10px calc((76px - 54px)/2) 0 0;
+		margin: 3px calc((76px - 54px)/2) 0 0;
 	}
 	table{
 		font-size: 16px;
@@ -55,7 +55,7 @@ body{
     }
 	.form_upd, .form_crea{
 		margin: 0 auto;
-	    width: 600px;
+	    max-width: 600px;
 	    /* Pour voir les limites du formulaire */
 	    padding: 1em;
 	    border: 1px solid #CCC;
@@ -96,4 +96,21 @@ body{
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
